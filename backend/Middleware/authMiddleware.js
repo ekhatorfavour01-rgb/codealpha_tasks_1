@@ -28,8 +28,9 @@ exports.protect = asyncHandler(async (req, res, next) => {
 });
 
 exports.adminOnly = (req, res, next) => {
-    if (!req.user && req.user.role === 'admin') 
+    if (req.user && req.user.role === 'admin') {
         return next();
+    }
         res.status(403);
         next(new Error('Admin access only'));
 
