@@ -4,18 +4,15 @@ const Order = require('../Models/Order');
 const asyncHandler = require('../Utils/asyncHandler');
 
 exports.getStats = asyncHandler(async (req, res) => {
-
     const [users, products, orders, revenueAgg, recentOrders] = await Promise.all([
         User.countDocuments(),
         Product.countDocuments(),
         Order.countDocuments(),
-        Order.aggregate([{ $match:
-        { paymentStatus: 'Paid' }
-        },
-        { $group: { _id: null, total: { $sum: '$total' } } }
-    ]),
-
-    Order.find().sort({ createdAt: -1 }),limit(5).populate('user', 'name email'),
+        Order.aggregate([
+            { $match: { paymentStatus: 'Paid' } },
+            { $group: { _id: null, total: { $sum: '$total' } } },
+        ]),
+        Order.find().sort({ createdAt: -1 }).limit(5).populate('user', 'name email'),
     ]);
 
     res.json({ users, products, orders, revenue: revenueAgg[0]?.total || 0, recentOrders });
@@ -23,7 +20,7 @@ exports.getStats = asyncHandler(async (req, res) => {
 
 
 exports.getOrders = asyncHandler(async (req, res) => {
-    res.json((await Order.find()).toSorted({ createdAt: -1 }).populate('user', 'name email'));
+    res.json(await Order.find().sort({ createdAt: -1 }).populate('user', 'name email'));
 });
 
 
@@ -46,7 +43,7 @@ exports.updateOrderStatus = asyncHandler(async (req, res) => {
 
 
 exports.getUsers = asyncHandler(async (req, res) => {
-    res.json((await User.find()).toSorted({ createdAt: -1 }));
+    res.json(await User.find().sort({ createdAt: -1 }));
 });
 
 
@@ -61,9 +58,12 @@ exports.updateUserRole = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error('You cannot change your own role');
     }
-    res.json(await User.findByIdAndUpdate(req.params.id, { role },
-        { new: true }
-    ));
+    const user = await User.findByIdAndUpdate(req.params.id, { role }, { new: true });
+    if (!user) {
+        res.status(404);
+        throw new Error('User not found');
+    }
+    res.json(user);
 });
 
 
@@ -72,6 +72,10 @@ exports.deleteUser = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error('You cannot delete your own account');
     }
-    await User.findByIdAndDelete(req.params.id);
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+        res.status(404);
+        throw new Error('User not found');
+    }
     res.json({ message: 'User deleted' });
 });

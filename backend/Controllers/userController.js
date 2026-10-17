@@ -3,7 +3,7 @@ const asyncHandler = require('../Utils/asyncHandler');
 
 exports.getProfile = asyncHandler(async (req, res) => {
     const { _id, name, email, phone, address, role } = req.user;
-    res.json({ _id, name, email, phone, address, role });
+    res.json({ _id, name, email, phone, address: address || req.user.adress || '', role });
 });
 
 exports.updateProfile = asyncHandler(async (req, res) => {

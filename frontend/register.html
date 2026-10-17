@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f1">
+    <title>Create Account — Haven Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="pages.js"></script>
+  </head>
+  <body data-page="register">
+    <div class="announcement">A little joy, delivered.</div>
+    <header class="page-header"><a class="brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><nav><a href="index.html#collection">Shop</a><a href="cart.html">Bag</a><a href="login.html">Sign in</a></nav></header>
+    <main class="page-main narrow-page auth-page">
+      <p class="eyebrow">MAKE YOURSELF AT HOME</p><h1 class="page-title">Join Haven.</h1><p class="page-intro">Create an account to keep track of your lovely finds.</p>
+      <form class="page-panel page-form" id="auth-page-form">
+        <label>Your name<input name="name" type="text" autocomplete="name" minlength="2" required></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+        <label>Password<input name="password" type="password" autocomplete="new-password" minlength="6" required></label>
+        <p id="page-message" class="form-message" aria-live="polite"></p>
+        <button class="primary-button full-button" id="auth-page-submit" type="submit">Create account</button>
+      </form>
+      <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+    </main>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><a href="index.html">Back to shop</a></footer>
+  </body>
+</html>

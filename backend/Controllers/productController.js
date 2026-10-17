@@ -30,12 +30,16 @@ exports.getProductById = asyncHandler(async (req, res) => {
 exports.createProduct = asyncHandler(async (req, res) => {
   const data = { ...req.body };
   if (req.file) data.image = await uploadImage(req.file.buffer);
+  else if (data.imageUrl) data.image = data.imageUrl;
+  delete data.imageUrl;
   res.status(201).json(await Product.create(data));
 });
 
 exports.updateProduct = asyncHandler(async (req, res) => {
   const data = { ...req.body };
   if (req.file) data.image = await uploadImage(req.file.buffer);
+  else if (data.imageUrl) data.image = data.imageUrl;
+  delete data.imageUrl;
   const product = await Product.findByIdAndUpdate(req.params.id, data, { new: true, runValidators: true });
   if (!product) {
     res.status(404);

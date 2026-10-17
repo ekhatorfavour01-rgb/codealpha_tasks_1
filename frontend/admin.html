@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f1">
+    <title>Admin Dashboard — Haven Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="pages.js"></script>
+  </head>
+  <body data-page="admin">
+    <div class="announcement">Haven Market store management</div>
+    <header class="page-header"><a class="brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><nav><a href="index.html#collection">Shop</a><a href="cart.html">Bag</a><a href="profile.html">Profile</a><a href="orders.html">Orders</a><a class="active" href="admin.html">Admin</a></nav></header>
+    <main class="page-main admin-page">
+      <p class="eyebrow">STORE MANAGEMENT</p><h1 class="page-title">Admin dashboard.</h1><p class="page-intro">Manage products, customer orders, and user access.</p>
+      <p id="admin-message" class="form-message" aria-live="polite"></p>
+      <div id="admin-content">
+        <section><h2>Overview</h2><div id="admin-stats" class="admin-stats"><div class="loading-state"><span class="loader"></span></div></div></section>
+        <section class="admin-section"><div class="admin-section-heading"><div><h2>Products</h2><p>Add, edit, or remove products from the public catalog.</p></div></div>
+          <form id="product-form" class="admin-product-form page-panel">
+            <label>Product name<input name="name" required></label><label>Brand<input name="brand"></label><label>Category<input name="category"></label>
+            <label>Price (NGN)<input name="price" type="number" min="0" step="0.01" required></label><label>Old price<input name="oldPrice" type="number" min="0" step="0.01"></label><label>Stock<input name="stock" type="number" min="0" step="1" value="0" required></label>
+            <label class="wide-field">Description<textarea name="description" rows="2"></textarea></label><label class="wide-field">Product image URL<input name="imageUrl" type="url" placeholder="https://example.com/image.jpg"></label><label class="wide-field">Or upload an image<input name="image" type="file" accept="image/*"><small class="field-note">File uploads require Cloudinary configuration on the backend.</small></label>
+            <div class="wide-field form-actions"><button class="primary-button" id="product-submit" type="submit">Add product</button><button class="secondary-button" id="product-reset" type="button">Clear form</button></div>
+          </form>
+          <div class="table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead><tbody id="admin-products"><tr><td colspan="5">Loading products...</td></tr></tbody></table></div>
+        </section>
+        <section class="admin-section"><h2>Orders</h2><p>Update an order's fulfillment status.</p><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody id="admin-orders"><tr><td colspan="4">Loading orders...</td></tr></tbody></table></div></section>
+        <section class="admin-section"><h2>Users</h2><p>Manage user roles and accounts. Your own administrator account cannot be changed here.</p><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Actions</th></tr></thead><tbody id="admin-users"><tr><td colspan="4">Loading users...</td></tr></tbody></table></div></section>
+      </div>
+    </main>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><a href="index.html">Back to shop</a></footer>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 const multer = require("multer");
 
 const upload = multer({
-    Storage: multer.memoryStorage(), // hold it in memory do not save it in our computer
+    storage: multer.memoryStorage(), // hold it in memory; do not save it on disk
     limits: { fileSize: 3 * 1024 * 1024 }, // the biggest allowed 3 MB
 
     fileFilter: (req, file, cb) => {

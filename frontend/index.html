@@ -10,9 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script>
-      window.STORE_API_URL = 'https://ecommerce-store-codealpha.onrender.com/api';
-    </script>
     <script defer src="app.js"></script>
   </head>
   <body>
@@ -86,7 +83,7 @@
       </section>
     </main>
 
-    <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><span>© <span id="year"></span> Haven Market</span></footer>
+    <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><span class="footer-links"><a href="profile.html">Profile</a><a href="orders.html">Orders</a><a href="admin.html">Admin</a></span><span>© <span id="year"></span> Haven Market</span></footer>
 
     <div class="overlay hidden" id="overlay"></div>
     <aside class="cart-drawer" id="cart-drawer" aria-label="Your shopping bag" aria-hidden="true">
@@ -108,6 +105,9 @@
       </form>
       <p class="switch-auth"><span id="switch-auth-copy">New around here?</span> <button type="button" id="switch-auth">Create an account</button></p>
       <button class="secondary-button full-button hidden" id="orders-button" type="button">View my orders</button>
+      <a class="secondary-button full-button hidden account-link" id="profile-link" href="profile.html">Edit my profile</a>
+      <a class="secondary-button full-button hidden account-link" id="admin-link" href="admin.html">Open admin dashboard</a>
+      <p class="switch-auth"><a href="login.html">Sign in page</a> · <a href="register.html">Create account page</a></p>
     </dialog>
 
     <dialog class="modal checkout-modal" id="checkout-modal">

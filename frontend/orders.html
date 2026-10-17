@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f1">
+    <title>My Orders — Haven Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="pages.js"></script>
+  </head>
+  <body data-page="orders">
+    <div class="announcement">Your order history</div>
+    <header class="page-header"><a class="brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><nav><a href="index.html#collection">Shop</a><a href="cart.html">Bag</a><a href="profile.html">Profile</a><a class="active" href="orders.html">Orders</a><a href="admin.html">Admin</a></nav></header>
+    <main class="page-main narrow-page">
+      <p class="eyebrow">A LITTLE HISTORY</p><h1 class="page-title">Your orders.</h1><p class="page-intro">Track orders placed with your Haven Market account.</p>
+      <p id="page-message" class="form-message" aria-live="polite"></p>
+      <div id="orders-page-list" class="orders-page-list"><div class="loading-state"><span class="loader"></span><p>Gathering your orders...</p></div></div>
+    </main>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><a href="index.html#collection">Shop again</a></footer>
+  </body>
+</html>

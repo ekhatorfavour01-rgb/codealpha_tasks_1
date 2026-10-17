@@ -147,7 +147,7 @@ function renderProducts() {
         </div>
         <div class="product-info">
           <div class="product-topline"><span>${escapeHTML(product.brand || product.category || 'Haven pick')}</span><span class="product-rating">★ ${Number(product.rating || 0).toFixed(1)}</span></div>
-          <h3 class="product-name" title="${escapeHTML(product.name)}">${escapeHTML(product.name)}</h3>
+          <h3 class="product-name" title="${escapeHTML(product.name)}"><a href="product.html?id=${encodeURIComponent(product._id)}">${escapeHTML(product.name)}</a></h3>
           <div class="product-bottom">
             <span class="price-wrap"><strong class="price">${money(product.price)}</strong>${product.oldPrice ? `<del class="old-price">${money(product.oldPrice)}</del>` : ''}</span>
             <button class="add-button" type="button" data-add="${id}" ${soldOut ? 'disabled aria-label="Out of stock"' : 'aria-label="Add to bag"'}>${soldOut ? '–' : '+'}</button>
@@ -266,12 +266,16 @@ function renderAccount() {
 function openAuth() {
   if (state.user) {
     $('#orders-button').classList.remove('hidden');
+    $('#profile-link').classList.remove('hidden');
+    $('#admin-link').classList.toggle('hidden', state.user.role !== 'admin');
     $('#auth-form').classList.add('hidden');
     $('.switch-auth').classList.add('hidden');
     $('#auth-title').textContent = `Hello, ${state.user.name.split(' ')[0]}.`;
     $('#auth-copy').textContent = `${state.user.email} · ${state.user.role}`;
   } else {
     $('#orders-button').classList.add('hidden');
+    $('#profile-link').classList.add('hidden');
+    $('#admin-link').classList.add('hidden');
     $('#auth-form').classList.remove('hidden');
     $('.switch-auth').classList.remove('hidden');
   }

@@ -6,9 +6,9 @@ A small e-commerce demo with a responsive, plain HTML/CSS/JavaScript storefront 
 
 - Responsive storefront with product search, category filters, sorting, favorites, and a persistent cart.
 - User registration and sign-in using bearer-token authentication.
-- Authenticated checkout and order history.
+- Account profile editing, authenticated checkout, and order history.
 - Demo card payment. No real payment is processed.
-- Product, order, user, and admin API endpoints.
+- Admin dashboard for product, order, and user management.
 - Optional Cloudinary support for admin product uploads.
 
 ## Requirements
@@ -67,9 +67,9 @@ With the backend running, open:
 http://localhost:5000/
 ```
 
-The UI is in `frontend/index.html`, `frontend/styles.css`, and `frontend/app.js`; it uses no frontend package manager or build step. API requests use the `/api` path on the current site by default, which works when Express serves both the frontend and API from the same origin. All API operations (catalog, authentication, orders, and payments) go through the `request()` helper in `frontend/app.js`.
+The UI is in `frontend/` and uses no frontend package manager or build step. `index.html` is the storefront; `product.html`, `cart.html`, `checkout.html`, `login.html`, `register.html`, `profile.html`, `orders.html`, and `admin.html` provide the linked product, account, and store-management pages. API requests use the `/api` path on the current site by default, which works when Express serves both the frontend and API from the same origin. Storefront requests are handled in `app.js`; the standalone pages share `pages.js`.
 
-If you deploy the frontend and backend to different domains, set the API base URL in `frontend/index.html` before the existing deferred `app.js` script:
+If you deploy the frontend and backend to different domains, set the API base URL in each page's `<head>` before its deferred JavaScript:
 
 ```html
 <script>
@@ -101,6 +101,9 @@ All routes are prefixed with `/api`.
 | `GET` | `/orders/:id` | Owner or admin | Get an order |
 | `POST` | `/payments/:id/pay` | Signed in | Make a demo payment with `{ cardNumber }` |
 | `GET` | `/admin/stats`, `/admin/orders`, `/admin/users` | Admin | Admin dashboard data |
+| `PUT` | `/admin/orders/:id/status` | Admin | Update an order status |
+| `PUT`, `DELETE` | `/admin/users/:id/role`, `/admin/users/:id` | Admin | Change a user's role or remove a user |
+| `POST`, `PUT`, `DELETE` | `/products`, `/products/:id` | Admin | Create, edit, or delete catalog products |
 
 For protected endpoints, send `Authorization: Bearer <token>`. Admin product and user-management endpoints are also defined in `backend/Routes/`; admin access requires an account with role `admin`.
 
@@ -127,7 +130,16 @@ backend/
   data/         Seed products
   scripts/      Database seed script
 frontend/
-  index.html    Storefront structure
+  index.html    Storefront
+  product.html  Product details
+  cart.html     Shopping bag
+  checkout.html Checkout and demo payment
+  login.html    Sign in
+  register.html Account creation
+  profile.html  Profile editing
+  orders.html   Customer order history
+  admin.html    Admin dashboard
   styles.css    Responsive visual styling
-  app.js        API integration and browser interactions
+  app.js        Storefront interactions
+  pages.js      API integration for standalone pages
 ```

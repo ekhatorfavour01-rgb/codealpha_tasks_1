@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f1">
+    <title>Checkout — Haven Market</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="pages.js"></script>
+  </head>
+  <body data-page="checkout">
+    <div class="announcement">A little joy, delivered. <span>Thoughtful finds for everyday living</span></div>
+    <header class="page-header"><a class="brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><nav><a href="index.html#collection">Shop</a><a href="cart.html">Bag</a><a href="profile.html">Profile</a><a href="orders.html">Orders</a><a href="admin.html">Admin</a></nav></header>
+    <main class="page-main narrow-page">
+      <p class="eyebrow">ALMOST YOURS</p><h1 class="page-title">Checkout.</h1><p class="page-intro">Confirm where to send your order and complete the demo payment.</p>
+      <section class="page-panel"><h2>Order summary</h2><div id="checkout-summary" class="checkout-summary"></div></section>
+      <section class="page-panel"><h2>Delivery & payment</h2>
+        <form id="checkout-page-form" class="page-form">
+          <label>Delivery address<textarea id="shipping-address" name="shippingAddress" rows="3" required placeholder="House number, street, city, state"></textarea></label>
+          <label>Demo card number<input name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="1234 5678 9012 3456" required></label>
+          <p class="demo-note">Demo payment only — no real money is charged. Use any 16 digits except a number ending in 0000.</p>
+          <p id="page-message" class="form-message" aria-live="polite"></p>
+          <button class="primary-button full-button" id="checkout-submit" type="submit">Place order <span>→</span></button>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><a href="cart.html">Back to bag</a></footer>
+  </body>
+</html>
