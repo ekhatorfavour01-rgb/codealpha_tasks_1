@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f7f7f1">
+    <meta name="description" content="Thoughtful finds for everyday living. Shop the Haven Market collection.">
+    <title>Haven Market — little things, lovely living</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      window.STORE_API_URL = 'https://YOUR-BACKEND-DOMAIN.com/api';
+    </script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="announcement">A little joy, delivered. <span>Free delivery on orders over ₦50,000</span></div>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="Haven Market home"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a>
+      <form class="search" id="search-form" role="search">
+        <label class="sr-only" for="search-input">Search products</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16 16 4 4"></path></svg>
+        <input id="search-input" type="search" placeholder="Search for something lovely..." autocomplete="off">
+        <button type="submit">Search</button>
+      </form>
+      <nav class="header-actions" aria-label="Main navigation">
+        <button class="text-button account-button" id="account-button" type="button"><span class="action-icon">♙</span><span id="account-label">Sign in</span></button>
+        <button class="cart-button" id="cart-button" type="button" aria-label="Open shopping bag"><span class="action-icon">▱</span><span>Bag</span><span class="cart-count" id="cart-count">0</span></button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> YOUR EVERYDAY, ELEVATED</p>
+          <h1>Find your<br><em>little</em> happy.</h1>
+          <p class="hero-description">Good things for good days. Explore thoughtful picks for your home, your plans, and everything in between.</p>
+          <a class="primary-button hero-link" href="#collection">Explore the collection <span aria-hidden="true">↗</span></a>
+          <div class="hero-note"><span class="avatar-stack"><i>J</i><i>A</i><i>M</i></span><span>Loved by <strong>2,400+</strong> happy homes</span></div>
+        </div>
+        <div class="hero-art" role="img" aria-label="A cozy, sunlit home interior">
+          <div class="hero-image"></div>
+          <div class="hero-note-card"><span class="note-icon">✳</span><span><strong>Good finds only</strong><small>Picked with care, always.</small></span></div>
+          <span class="hero-sparkle sparkle-one">✳</span><span class="hero-sparkle sparkle-two">✴</span>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="Our promises">
+        <div><span class="trust-icon">✿</span><span><strong>Thoughtful picks</strong><small>Quality you'll love</small></span></div>
+        <div><span class="trust-icon">↗</span><span><strong>Quick delivery</strong><small>Right to your door</small></span></div>
+        <div><span class="trust-icon">♡</span><span><strong>Made for you</strong><small>Easy, happy shopping</small></span></div>
+      </section>
+
+      <section class="collection section-wrap" id="collection">
+        <div class="section-heading">
+          <div><p class="eyebrow">THE GOOD STUFF</p><h2>Shop the collection<span class="heading-dot">.</span></h2></div>
+          <p class="section-intro">A few lovely things to make the everyday feel a little more special.</p>
+        </div>
+        <div class="collection-tools">
+          <div class="category-list" id="category-list" aria-label="Filter by category"></div>
+          <label class="sort-label" for="sort-select">Sort by
+            <select id="sort-select">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: low to high</option>
+              <option value="price-high">Price: high to low</option>
+              <option value="rating">Top rated</option>
+            </select>
+          </label>
+        </div>
+        <p class="result-message" id="result-message" aria-live="polite"></p>
+        <div class="product-grid" id="product-grid"></div>
+        <div class="empty-state hidden" id="empty-state">
+          <span>✿</span><h3>No lovely finds just yet</h3><p>Try another search or choose a different category.</p>
+          <button class="secondary-button" id="clear-filters" type="button">Clear filters</button>
+        </div>
+        <div class="loading-state" id="loading-state"><span class="loader"></span><p>Finding the good stuff...</p></div>
+        <div class="api-error hidden" id="api-error" role="alert"></div>
+      </section>
+
+      <section class="newsletter section-wrap">
+        <div class="newsletter-flower" aria-hidden="true">✳</div>
+        <div><p class="eyebrow">A NOTE FROM US</p><h2>Good things, <em>once in a while.</em></h2><p>Little updates, new finds, and a bit of everyday inspiration.</p></div>
+        <form id="newsletter-form"><label class="sr-only" for="newsletter-email">Your email address</label><input id="newsletter-email" type="email" placeholder="Your email address" required><button type="submit" aria-label="Subscribe">Join us <span aria-hidden="true">→</span></button></form>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="brand footer-brand" href="#"><span class="brand-mark">h</span><span>haven<span class="brand-light">market</span></span></a><p>Little things, lovely living.</p><span>© <span id="year"></span> Haven Market</span></footer>
+
+    <div class="overlay hidden" id="overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Your shopping bag" aria-hidden="true">
+      <div class="drawer-header"><div><p class="eyebrow">YOUR GOODIES</p><h2>Your bag <span id="drawer-count">(0)</span></h2></div><button class="icon-button" id="close-cart" type="button" aria-label="Close bag">×</button></div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-empty" id="cart-empty"><span>♡</span><h3>Your bag is taking a little nap.</h3><p>Find something lovely to bring it to life.</p><button class="primary-button" id="continue-shopping" type="button">Keep exploring</button></div>
+      <div class="cart-footer hidden" id="cart-footer"><div class="subtotal-line"><span>Subtotal</span><strong id="cart-subtotal">₦0</strong></div><small>Delivery fees are confirmed at checkout.</small><button class="primary-button checkout-button" id="checkout-button" type="button">Continue to checkout <span>→</span></button></div>
+    </aside>
+
+    <dialog class="modal" id="auth-modal">
+      <button class="icon-button modal-close" type="button" data-close="auth-modal" aria-label="Close">×</button>
+      <p class="eyebrow">WELCOME TO HAVEN</p><h2 id="auth-title">Come on in.</h2><p class="modal-copy" id="auth-copy">Sign in to see your orders and make checkout a little easier.</p>
+      <form id="auth-form">
+        <label id="name-field" class="hidden">Your name<input name="name" type="text" autocomplete="name" minlength="2"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" minlength="6" required></label>
+        <p class="form-message" id="auth-message" aria-live="polite"></p>
+        <button class="primary-button full-button" id="auth-submit" type="submit">Sign in</button>
+      </form>
+      <p class="switch-auth"><span id="switch-auth-copy">New around here?</span> <button type="button" id="switch-auth">Create an account</button></p>
+      <button class="secondary-button full-button hidden" id="orders-button" type="button">View my orders</button>
+    </dialog>
+
+    <dialog class="modal checkout-modal" id="checkout-modal">
+      <button class="icon-button modal-close" type="button" data-close="checkout-modal" aria-label="Close">×</button>
+      <p class="eyebrow">ALMOST YOURS</p><h2>Where should we send it?</h2><p class="modal-copy">Add your delivery address and finish your order.</p>
+      <form id="checkout-form">
+        <label>Delivery address<textarea name="shippingAddress" rows="3" placeholder="House number, street, city, state" required></textarea></label>
+        <label>Demo card number<input name="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="1234 5678 9012 3456" required></label>
+        <small class="demo-note">Demo payment only — no real money is charged. Use any 16 digits except a number ending in 0000.</small>
+        <p class="form-message" id="checkout-message" aria-live="polite"></p>
+        <button class="primary-button full-button" id="place-order-button" type="submit">Place order <span>→</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="modal orders-modal" id="orders-modal">
+      <button class="icon-button modal-close" type="button" data-close="orders-modal" aria-label="Close">×</button>
+      <p class="eyebrow">A LITTLE HISTORY</p><h2>Your orders</h2>
+      <div class="orders-list" id="orders-list"></div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
