@@ -1,4 +1,4 @@
-const API_BASE = (window.STORE_API_URL || '/api').replace(/\/+$/, '');
+const API_BASE = (window.STORE_API_URL || 'https://ecommerce-store-codealpha.onrender.com/api').replace(/\/+$/, '');
 const USER_KEY = 'haven-market-user';
 const CART_KEY = 'haven-market-cart';
 const $ = (selector) => document.querySelector(selector);
