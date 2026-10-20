@@ -457,7 +457,7 @@ const products = [
     category: "Accessories",
     color: "brown",
     rating: 4.3,
-    image: "https://images.unsplash.com/photo-1553704571-c32d20e3a8cf?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1711443982852-b3df5c563448?q=80&w=464&auto=format&fit=crop",
     stock: 25
   },
   {
@@ -526,7 +526,7 @@ const products = [
     category: "Home",
     color: "white",
     rating: 4.4,
-    image: "https://images.unsplash.com/photo-1594213114663-b9b6e44a7ce7?w=600&q=80&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1650940925927-f4a30c930a4d?q=80&w=848&auto=format&fit=crop",
     stock: 20
   },
   {
