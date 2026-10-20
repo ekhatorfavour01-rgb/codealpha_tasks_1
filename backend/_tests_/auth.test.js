@@ -21,10 +21,16 @@ afterAll(async () => {
 describe('Auth', () => {
   // Test 1: can a new person sign up?
   it('registers a new user', async () => {
-    const res = await request(app).post('/api/auth/register').send({ name: 'Test', email, password: 'secret123' });
+    const res = await request(app).post('/api/auth/register').send({
+      name: 'Test',
+      email,
+      password: 'secret123',
+      role: 'admin',
+    });
     
     expect(res.statusCode).toBe(201);      // we expect "created!"
     expect(res.body.token).toBeDefined();  // we expect a wristband
+    expect(res.body.role).toBe('user');
   });
 
   // Test 2: is a WRONG password refused?

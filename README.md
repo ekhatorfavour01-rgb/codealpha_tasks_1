@@ -32,7 +32,7 @@ PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/haven-market
 JWT_SECRET=replace-this-with-a-long-random-secret
 
-# Optional: seed script admin account
+# Required for the seed script admin account
 ADMIN_NAME=Store Admin
 ADMIN_EMAIL=admin@store.com
 ADMIN_PASSWORD=replace-this-password
@@ -49,7 +49,7 @@ Start MongoDB, then seed the sample catalog and admin account:
 npm run seed
 ```
 
-The seed script replaces all existing products with the sample catalog. It creates an admin only if `ADMIN_EMAIL` does not already exist. Keep the admin password private and change the sample defaults before using the project beyond local development.
+The seed script replaces all existing products with the sample catalog. It requires `ADMIN_EMAIL` and `ADMIN_PASSWORD` to be set, and creates an admin only if that email does not already exist. Public registration always creates a regular user; an existing administrator can promote users from the protected admin dashboard.
 
 Start the API:
 
@@ -143,3 +143,9 @@ frontend/
   app.js        Storefront interactions
   pages.js      API integration for standalone pages
 ```
+## Deployed Link
+backend/
+https://ecommerce-store-codealpha.onrender.com
+
+frontend
+https://ecommerce-store-task-1-codealphatec-chi.vercel.app

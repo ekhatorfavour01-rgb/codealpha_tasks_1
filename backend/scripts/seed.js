@@ -6,6 +6,12 @@ const products = require('../data/products'); // the shopping list of sample pro
 
 // An "async" function wrapped in ( ) and called right away
 (async () => {
+  const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  const password = process.env.ADMIN_PASSWORD;
+  if (!email || !password) {
+    throw new Error('ADMIN_EMAIL and ADMIN_PASSWORD must be set before seeding.');
+  }
+
   // Connect to the database
   await mongoose.connect(process.env.MONGO_URI);
 
@@ -15,14 +21,13 @@ const products = require('../data/products'); // the shopping list of sample pro
   console.log(`${products.length} products added`);
 
   // STEP 2: create the admin, using the details from the .env file
-  const email = (process.env.ADMIN_EMAIL || 'admin@store.com').toLowerCase();
   const exists = await User.findOne({ email }); // is there already an admin?
 
   if (!exists) {
     await User.create({
       name: process.env.ADMIN_NAME || 'Admin',
       email,
-      password: process.env.ADMIN_PASSWORD || 'Admin123!',
+      password,
       role: 'admin', // THIS is what makes them the boss
     });
     console.log(`Admin created: ${email}`);
